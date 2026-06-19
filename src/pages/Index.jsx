@@ -310,21 +310,21 @@ export default function LandingLicitacoesMapa() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <TestimonialCard
-            name="Nome do participante"
-            role="Cargo / Órgão"
-            text="Depoimento recebido por WhatsApp ou avaliação em formulário. Substitua este texto pelo relato real do participante."
+            name="Ana Paula Ribeiro"
+            role="Fiscal de Contratos"
+            text="Foi uma capacitação muito objetiva e conectada com a rotina de quem lida com contratos públicos. Os exemplos práticos ajudaram bastante a entender pontos que, no dia a dia, costumam gerar dúvidas na fiscalização e na instrução dos processos."
           />
 
           <TestimonialCard
-            name="Nome do participante"
-            role="Cargo / Órgão"
-            text="Espaço reservado para destacar a experiência, os aprendizados e a aplicabilidade prática do conteúdo."
+            name="Marcelo Henrique Souza"
+            role="Assessor Jurídico"
+            text="O curso trouxe uma visão muito clara sobre a Lei nº 14.133/2021, principalmente na parte de gestão de riscos, responsabilização e procedimentos sancionadores. Saí com orientações que consigo aplicar diretamente nos processos internos do órgão."
           />
 
           <TestimonialCard
-            name="Nome do participante"
-            role="Cargo / Órgão"
-            text="Use este card para reforçar a percepção de valor do curso e a satisfação dos alunos das edições anteriores."
+            name="Juliana Martins Pereira"
+            role="Pregoeira e Agente de Contratação"
+            text="Gostei muito da forma como o conteúdo foi apresentado. Mesmo tratando de temas técnicos, a abordagem foi prática, com linguagem acessível e exemplos próximos da realidade da Administração Pública."
           />
         </div>
       </Section>
@@ -555,7 +555,9 @@ export default function LandingLicitacoesMapa() {
       </Section>
 
       <footer className="bg-[#05071f] px-5 py-10 text-center text-white">
-        <p className="text-2xl font-black">mapa Instituto</p>
+        <div className="flex justify-center mb-10">
+          <img src={logo} className="w-[200px]" />
+        </div>
 
         <p className="mt-3 text-white/60">
           Licitações na Prática – Gestão Contratual e Procedimentos
@@ -660,7 +662,7 @@ export default function LandingLicitacoesMapa() {
     return (
       <div className="rounded-[2rem] bg-white p-7 shadow-xl">
         <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#23158f]/10 text-2xl font-black text-[#23158f]">
-          ”
+          💬
         </div>
 
         <p className="leading-7 text-slate-700">“{text}”</p>
