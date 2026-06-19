@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://familia-tacianemartins.advespecialista.adv.br/sitemap.xml`
