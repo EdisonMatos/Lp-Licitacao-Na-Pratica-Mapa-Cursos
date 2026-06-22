@@ -1,9 +1,7 @@
 import { useState } from "react";
+import Email from "./Email";
 
 export default function LandingLicitacoesMapa() {
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-
   const whatsappNumber = "5545991290837";
   const whatsappMessage =
     "Olá, gostaria de obter mais informações sobre o curso Licitações na Prática.";
@@ -15,8 +13,8 @@ export default function LandingLicitacoesMapa() {
   const folderImage = "/images/folder-licitacoes.jpg";
   const logo = "/images/logo.webp";
 
-  const youtubeVideo1 = ""; // cole aqui o link do YouTube
-  const youtubeVideo2 = ""; // cole aqui o link do YouTube
+  const youtubeVideo1 = "https://m.youtube.com/shorts/qNkpAnpX4JU"; // cole aqui o link do YouTube
+  const youtubeVideo2 = "https://m.youtube.com/shorts/HKpcdojfVFg"; // cole aqui o link do YouTube
 
   const schedule = [
     ["08:00 às 09:40", "Aula"],
@@ -53,40 +51,14 @@ export default function LandingLicitacoesMapa() {
     });
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setSending(true);
-
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      await fetch("https://formsubmit.co/ajax/mapainstituto@outlook.com", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
-      });
-
-      setSent(true);
-      e.currentTarget.reset();
-    } catch (error) {
-      alert(
-        "Não foi possível enviar sua pré-inscrição agora. Tente novamente ou entre em contato pelo WhatsApp."
-      );
-    } finally {
-      setSending(false);
-    }
-  }
-
   function getYoutubeEmbed(url) {
     if (!url) return "";
 
     const match = url.match(
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/
+      /(?:youtube\.com\/watch\?v=|m\.youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|m\.youtube\.com\/shorts\/|youtube\.com\/shorts\/)([^&?/]+)/
     );
 
-    return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+    return match ? `https://www.youtube.com/embed/${match[1]}` : "";
   }
 
   return (
@@ -100,7 +72,7 @@ export default function LandingLicitacoesMapa() {
       >
         <svg
           viewBox="0 0 32 32"
-          className="h-8 w-8 fill-current"
+          className="w-8 h-8 fill-current"
           aria-hidden="true"
         >
           <path d="M19.11 17.37c-.29-.14-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.14-.19.29-.74.94-.91 1.13-.17.19-.33.21-.62.07-.29-.14-1.21-.45-2.31-1.43-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.48h-.55c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.43 1.03 2.8 1.17 2.99.14.19 2.03 3.09 4.91 4.33.69.3 1.22.48 1.64.61.69.22 1.31.19 1.8.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33ZM16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.29.6 4.53 1.74 6.5L3 29l6.67-1.75A12.93 12.93 0 0 0 16.04 29c7.18 0 13-5.82 13-13s-5.82-13-13-13Zm0 23.79c-2.13 0-4.21-.57-6.03-1.66l-.43-.25-3.96 1.04 1.06-3.86-.28-.45A10.73 10.73 0 0 1 5.24 16c0-5.95 4.84-10.79 10.8-10.79 5.95 0 10.79 4.84 10.79 10.79s-4.84 10.79-10.79 10.79Z" />
@@ -109,38 +81,38 @@ export default function LandingLicitacoesMapa() {
 
       <header className="relative min-h-screen overflow-hidden bg-[#05071f] text-white">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${coverImage})` }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-br from-[#05071f]/95 via-[#080b2b]/95 to-[#05071f]/95" />
         {/* <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f6f8ff] to-transparent" /> */}
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 py-20">
+        <div className="relative z-10 flex items-center min-h-screen px-5 py-20 mx-auto max-w-7xl">
           <div className="grid w-full gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <div className="flex justify-center md:justify-start mb-20">
+              <div className="flex justify-center mb-20 md:justify-start">
                 <img src={logo} className="w-[200px]" />
               </div>
               <p className="mb-5 text-sm font-semibold uppercase tracking-[0.5em] text-cyan-200">
                 3ª edição
               </p>
 
-              <h1 className="max-w-5xl text-5xl font-black uppercase leading-none tracking-tight md:text-7xl lg:text-8xl">
+              <h1 className="max-w-5xl text-5xl font-black leading-none tracking-tight uppercase md:text-7xl lg:text-8xl">
                 Licitações na Prática
               </h1>
 
-              <p className="mt-5 max-w-4xl text-xl font-bold uppercase tracking-wide text-cyan-200 md:text-3xl">
+              <p className="max-w-4xl mt-5 text-xl font-bold tracking-wide uppercase text-cyan-200 md:text-3xl">
                 Gestão Contratual e Procedimentos Sancionadores
               </p>
 
-              <div className="mt-9 grid max-w-3xl gap-4 sm:grid-cols-3">
+              <div className="grid max-w-3xl gap-4 mt-9 sm:grid-cols-3">
                 <HeroInfo label="Data" value="10 e 11 de setembro" />
                 <HeroInfo label="Cidade" value="Maringá/PR" />
                 <HeroInfo label="Carga horária" value="16 horas" />
               </div>
 
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="flex flex-col gap-4 mt-10 sm:flex-row sm:items-center">
                 <button
                   onClick={scrollToForm}
                   className="rounded-full bg-cyan-300 px-9 py-4 text-base font-black uppercase tracking-wide text-[#05071f] shadow-[0_0_45px_rgba(103,232,249,0.45)] transition hover:scale-105 hover:bg-white"
@@ -233,7 +205,7 @@ export default function LandingLicitacoesMapa() {
             <img
               src={folderImage}
               alt="Prof. Matheus Carvalho"
-              className="h-full w-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
@@ -295,7 +267,7 @@ export default function LandingLicitacoesMapa() {
           description="Confira registros das edições anteriores do curso."
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 mt-10 md:grid-cols-2">
           <VideoCard url={youtubeVideo1} label="Vídeo 1" />
           <VideoCard url={youtubeVideo2} label="Vídeo 2" />
         </div>
@@ -305,10 +277,10 @@ export default function LandingLicitacoesMapa() {
         <SectionTitle
           eyebrow="Depoimentos"
           title="Experiências de quem já participou"
-          description="Espaço preparado para inserir depoimentos com texto, foto, cargo e órgão."
+          description=""
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 mt-10 md:grid-cols-3">
           <TestimonialCard
             name="Ana Paula Ribeiro"
             role="Fiscal de Contratos"
@@ -345,7 +317,7 @@ export default function LandingLicitacoesMapa() {
               estrutura de horários.
             </p>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="grid gap-5 mt-8 md:grid-cols-2">
               <ScheduleCard day="10 de setembro" schedule={schedule} />
               <ScheduleCard day="11 de setembro" schedule={schedule} />
             </div>
@@ -370,7 +342,7 @@ export default function LandingLicitacoesMapa() {
             <ul className="mt-8 space-y-4">
               {content.map((item, index) => (
                 <li key={index} className="flex gap-3 text-white/75">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-300" />
+                  <span className="w-2 h-2 mt-2 rounded-full shrink-0 bg-cyan-300" />
                   <span className="leading-7">{item}</span>
                 </li>
               ))}
@@ -386,7 +358,7 @@ export default function LandingLicitacoesMapa() {
           description="Os valores são definidos por lote, conforme a data da inscrição."
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 mt-10 md:grid-cols-3">
           <PriceCard
             title="1º Lote"
             date="até 30/06/2026"
@@ -461,97 +433,7 @@ export default function LandingLicitacoesMapa() {
       </Section>
 
       <Section>
-        <div
-          id="formulario-inscricao"
-          className="mx-auto max-w-4xl scroll-mt-10 rounded-[2rem] bg-white p-6 shadow-2xl md:p-10"
-        >
-          <SectionTitle
-            eyebrow="Formulário de inscrição"
-            title="Preencha seus dados para realizar a pré-inscrição"
-            description="Após o envio, a equipe entrará em contato para confirmar a inscrição e fornecer as informações para contratação formalizada."
-          />
-
-          {sent ? (
-            <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
-              <h3 className="text-2xl font-black text-emerald-700">
-                Sua pré-inscrição foi recebida com sucesso.
-              </h3>
-
-              <p className="mt-3 text-slate-700">
-                Em breve nossa equipe entrará em contato para confirmar a
-                inscrição e fornecer as informações para contratação
-                formalizada.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="mt-10 space-y-8">
-              <input
-                type="hidden"
-                name="_subject"
-                value="Nova pré-inscrição - Curso Licitações na Prática"
-              />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-
-              <div>
-                <h3 className="mb-5 text-xl font-black text-[#080b2b]">
-                  Dados pessoais
-                </h3>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Input name="Nome completo" label="Nome completo" required />
-                  <Input name="WhatsApp" label="WhatsApp" required />
-
-                  <Input
-                    name="E-mail"
-                    label="E-mail"
-                    type="email"
-                    required
-                    className="md:col-span-2"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <h3 className="mb-5 text-xl font-black text-[#080b2b]">
-                  Dados institucionais
-                </h3>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="md:col-span-2">
-                    <label className="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-600">
-                      Órgão ou ofício onde trabalha
-                    </label>
-
-                    <select
-                      name="Órgão ou ofício"
-                      required
-                      className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 outline-none transition focus:border-[#23158f] focus:ring-4 focus:ring-[#23158f]/10"
-                    >
-                      <option value="">Selecione uma opção</option>
-                      <option>Prefeitura Municipal</option>
-                      <option>Câmara Municipal</option>
-                      <option>Autarquia</option>
-                      <option>Fundação Pública</option>
-                      <option>Iniciativa Privada</option>
-                    </select>
-                  </div>
-
-                  <Input name="Município/UF" label="Município/UF" required />
-                  <Input name="Cargo/Função" label="Cargo/Função" required />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={sending}
-                className="w-full rounded-full bg-[#23158f] px-8 py-5 text-lg font-black uppercase text-white transition hover:bg-[#080b2b] disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {sending ? "Enviando..." : "Enviar pré-inscrição"}
-              </button>
-            </form>
-          )}
-        </div>
+        <Email />
       </Section>
 
       <footer className="bg-[#05071f] px-5 py-10 text-center text-white">
@@ -564,7 +446,7 @@ export default function LandingLicitacoesMapa() {
           Sancionadores
         </p>
 
-        <div className="mt-6 flex flex-col items-center justify-center gap-2 text-white/70 sm:flex-row sm:gap-6">
+        <div className="flex flex-col items-center justify-center gap-2 mt-6 text-white/70 sm:flex-row sm:gap-6">
           <span>45 99129-0837</span>
           <span>mapainstituto@outlook.com</span>
           <span>www.mapacursos.com</span>
@@ -584,14 +466,14 @@ export default function LandingLicitacoesMapa() {
             : "bg-[#f6f8ff]"
         }`}
       >
-        <div className="mx-auto max-w-6xl">{children}</div>
+        <div className="max-w-6xl mx-auto">{children}</div>
       </section>
     );
   }
 
   function SectionTitle({ eyebrow, title, description }) {
     return (
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="max-w-3xl mx-auto text-center">
         <p className="mb-3 text-sm font-black uppercase tracking-[0.35em] text-[#23158f]">
           {eyebrow}
         </p>
@@ -609,8 +491,8 @@ export default function LandingLicitacoesMapa() {
 
   function HeroInfo({ label, value }) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
-        <p className="text-xs font-bold uppercase tracking-widest text-white/60">
+      <div className="p-5 border rounded-2xl border-white/10 bg-white/10 backdrop-blur">
+        <p className="text-xs font-bold tracking-widest uppercase text-white/60">
           {label}
         </p>
 
@@ -621,8 +503,8 @@ export default function LandingLicitacoesMapa() {
 
   function Info({ label, value }) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-        <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">
+      <div className="p-4 border rounded-2xl border-white/10 bg-white/5">
+        <p className="text-xs font-bold tracking-widest uppercase text-cyan-200">
           {label}
         </p>
 
@@ -640,7 +522,7 @@ export default function LandingLicitacoesMapa() {
           <iframe
             title={label}
             src={embed}
-            className="aspect-video w-full border-0"
+            className="w-full border-0 aspect-video"
             allowFullScreen
           />
         ) : (
@@ -683,7 +565,7 @@ export default function LandingLicitacoesMapa() {
           {schedule.map(([hour, label], index) => (
             <div
               key={index}
-              className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3"
+              className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-white/5"
             >
               <span className="font-semibold text-white/75">{hour}</span>
               <span className="font-black text-white">{label}</span>
@@ -740,7 +622,7 @@ export default function LandingLicitacoesMapa() {
   }) {
     return (
       <div className={className}>
-        <label className="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-600">
+        <label className="block mb-2 text-sm font-bold tracking-wide uppercase text-slate-600">
           {label}
         </label>
 
