@@ -6,7 +6,7 @@ export default function LandingLicitacoesMapa() {
   const whatsappMessage =
     "Olá, gostaria de obter mais informações sobre o curso Licitações na Prática.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
+    whatsappMessage,
   )}`;
 
   const coverImage = "/images/capa-licitacoes.jpg";
@@ -20,7 +20,7 @@ export default function LandingLicitacoesMapa() {
     ["08:00 às 09:40", "Aula"],
     ["09:40 às 10:00", "Intervalo"],
     ["10:00 às 11:40", "Aula"],
-    ["11:40 às 13:30", "Almoço"],
+    ["11:40 às 13:30", "Intervalo"],
     ["13:30 às 15:10", "Aula"],
     ["15:10 às 15:40", "Coffee Break"],
     ["15:40 às 17:20", "Aula"],
@@ -55,7 +55,7 @@ export default function LandingLicitacoesMapa() {
     if (!url) return "";
 
     const match = url.match(
-      /(?:youtube\.com\/watch\?v=|m\.youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|m\.youtube\.com\/shorts\/|youtube\.com\/shorts\/)([^&?/]+)/
+      /(?:youtube\.com\/watch\?v=|m\.youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|m\.youtube\.com\/shorts\/|youtube\.com\/shorts\/)([^&?/]+)/,
     );
 
     return match ? `https://www.youtube.com/embed/${match[1]}` : "";
@@ -94,6 +94,7 @@ export default function LandingLicitacoesMapa() {
               <div className="flex justify-center mb-20 md:justify-start">
                 <img src={logo} className="w-[200px]" />
               </div>
+
               <p className="mb-5 text-sm font-semibold uppercase tracking-[0.5em] text-cyan-200">
                 3ª edição
               </p>
@@ -133,6 +134,7 @@ export default function LandingLicitacoesMapa() {
 
             <div className="relative hidden lg:block">
               <div className="absolute -inset-6 rounded-[2.5rem] bg-cyan-300/20 blur-3xl" />
+
               <img
                 src={folderImage}
                 alt="Folder do curso Licitações na Prática"
@@ -180,10 +182,12 @@ export default function LandingLicitacoesMapa() {
 
             <div className="mt-6 space-y-4">
               <Info label="Curso" value="Licitações na Prática – 3ª Edição" />
+
               <Info
                 label="Tema"
                 value="Gestão Contratual e Procedimentos Sancionadores"
               />
+
               <Info label="Data" value="10 e 11 de setembro" />
               <Info label="Local" value="Hotel Deville – Maringá/PR" />
               <Info label="Carga horária" value="16 horas" />
@@ -377,6 +381,12 @@ export default function LandingLicitacoesMapa() {
             date="até 31/08/2026"
             price="R$ 2.900,00"
           />
+
+          <PriceCard
+            title="Último Lote"
+            date="de 01/09/2026 a 08/09/2026"
+            price="R$ 4.500,00"
+          />
         </div>
 
         <div className="mt-8 rounded-[2rem] bg-[#080b2b] p-8 text-center text-white">
@@ -462,8 +472,8 @@ export default function LandingLicitacoesMapa() {
           dark
             ? "bg-[#05071f] text-white"
             : soft
-            ? "bg-[#eef3ff]"
-            : "bg-[#f6f8ff]"
+              ? "bg-[#eef3ff]"
+              : "bg-[#f6f8ff]"
         }`}
       >
         <div className="max-w-6xl mx-auto">{children}</div>
